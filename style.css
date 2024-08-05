@@ -11,6 +11,12 @@
     text-align: center;
 }
 
+.numButton {
+    padding: 35px;
+    width: 40px;
+    text-align: center;
+}
+
 .container {
     display: flex;
     flex-flow: column;
@@ -26,4 +32,6 @@
     width: 280px;
     height: 100px;
     background-color: aqua;
+    font-size: 100px;
+    text-align: right;
 }
