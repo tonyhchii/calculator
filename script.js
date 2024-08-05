@@ -36,6 +36,14 @@ function concDisplay(num) {
 let buttonContainer = document.querySelector('.buttons');
 let numButtons = buttonContainer.querySelectorAll('.num');
 
+function updateNumber() {
+    if (secondNumber == null){
+        firstNumber = Number(display.innerText);
+    } else {
+        secondNumber = Number(display.innerText);
+    }
+}
+
 numButtons.forEach((button) => {
     button.addEventListener('click', function () {
        if (firstNumber == null) {
@@ -100,7 +108,6 @@ function calculate() {
         case "+": {
             ans = add(firstNumber, secondNumber);
             changeDisplay(ans);
-            console.log("modulo");
             break;
         }
         case "-": {
@@ -111,15 +118,22 @@ function calculate() {
         case "%": {
             ans = modulo(firstNumber, secondNumber);
             changeDisplay(ans);
-            console.log("modulo");
             break;
         }
         default: {
             console.log("no function");
-            break;
+            return;
         }
     }
     firstNumber = ans;
     secondNumber = null;
     operator = null;
 }
+
+let backButton = buttonContainer.querySelector(".back");
+backButton.addEventListener('click', function() {
+    let currString = display.innerText;
+    currString = currString.substring(0,currString.length - 1);
+    display.innerText = currString;
+    updateNumber();
+})
