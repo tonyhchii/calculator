@@ -47,19 +47,19 @@ function updateNumber() {
 numButtons.forEach((button) => {
     button.addEventListener('click', function () {
        if (firstNumber == null) {
-            firstNumber = Number(button.innerText);
-            changeDisplay(firstNumber);
+            changeDisplay(button.innerText);
+            updateNumber();
        } else {
             if (operator == null) {
                 concDisplay(button.innerText);
-                firstNumber = Number(display.innerText);
+                updateNumber();
             } else {
                 if (secondNumber == null) {
+                    changeDisplay(button.innerText);
                     secondNumber = Number(button.innerText);
-                    changeDisplay(secondNumber);
                 } else {
                     concDisplay(button.innerText);
-                    secondNumber = Number(display.innerText);
+                    updateNumber();
                 }
             }
        }
