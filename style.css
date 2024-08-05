@@ -4,3 +4,26 @@
     border:0;
     box-sizing: border-box;
 }
+
+.calcButton {
+    padding: 35px;
+    width: 40px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.row {
+    display:flex;
+}
+
+
+.display {
+    width: 280px;
+    height: 100px;
+    background-color: aqua;
+}
