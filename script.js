@@ -30,10 +30,40 @@ function concDisplay(num) {
 }
 
 let buttonContainer = document.querySelector('.buttons');
-let buttons = buttonContainer.querySelectorAll('.numButton');
+let numButtons = buttonContainer.querySelectorAll('.num');
 
-buttons.forEach((button) => {
+numButtons.forEach((button) => {
     button.addEventListener('click', function () {
         concDisplay(button.innerText);
+        if (operator == null) {
+            firstNumber = display.innerText;
+        } else {
+            secondNumber = display.innerText;
+        }
     });
+});
+
+let operButtons = buttonContainer.querySelectorAll('.oper');
+
+operButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+        clearDisplay();
+        operator = button.innerText;
+    });
+});
+
+let clearButton = buttonContainer.querySelector('.clear');
+clearButton.addEventListener('click', clearDisplay);
+
+let equalButton = buttonContainer.querySelector('.equal');
+equalButton.addEventListener('click', function() {
+    switch(operator) {
+        case "*": {
+            let ans = multiply(firstNumber, secondNumber);
+            changeDisplay(ans);
+        }
+    }
+    firstNumber = display.innerText;
+    operator = null;
+    secondNumber = null;
 });
