@@ -135,12 +135,27 @@ function calculate() {
 
 let backButton = buttonContainer.querySelector(".back");
 backButton.addEventListener('click', function() {
+    backspace()
+})
+
+function backspace() {
     let currString = display.innerText;
     currString = currString.substring(0,currString.length - 1);
     display.innerText = currString;
     updateNumber();
-})
+}
 
-document.addEventListener('keypress', function(e) {
-    console.log(e.code);
+document.addEventListener('keydown', function(e) {
+    let posNum = '1234567890';
+    let posOper = '%*/+-';
+    if (posNum.includes(e.key)) {
+        updateDisplay(e.key);
+    } else if (posOper.includes(e.key)) {
+        operator = e.key;
+    } else if (e.key = 'Enter') {
+        calculate();
+    } else if (e.key = 'Backspace'){
+        backspace();
+    }
+    console.log(e.key);
 });
