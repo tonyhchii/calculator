@@ -44,25 +44,29 @@ function updateNumber() {
     }
 }
 
+function updateDisplay(number) {
+    if (firstNumber == null) {
+        changeDisplay(number);
+        updateNumber();
+   } else {
+        if (operator == null) {
+            concDisplay(number);
+            updateNumber();
+        } else {
+            if (secondNumber == null) {
+                changeDisplay(number);
+                secondNumber = Number(number);
+            } else {
+                concDisplay(number);
+                updateNumber();
+            }
+        }
+   }
+}
+
 numButtons.forEach((button) => {
     button.addEventListener('click', function () {
-       if (firstNumber == null) {
-            changeDisplay(button.innerText);
-            updateNumber();
-       } else {
-            if (operator == null) {
-                concDisplay(button.innerText);
-                updateNumber();
-            } else {
-                if (secondNumber == null) {
-                    changeDisplay(button.innerText);
-                    secondNumber = Number(button.innerText);
-                } else {
-                    concDisplay(button.innerText);
-                    updateNumber();
-                }
-            }
-       }
+        updateDisplay(button.innerText);
     });
 });
 
@@ -81,7 +85,6 @@ operButtons.forEach((button) => {
 let clearButton = buttonContainer.querySelector('.clear');
 clearButton.addEventListener('click', function() {
     clearDisplay();
-    firstNumber = null;
 });
 
 let equalButton = buttonContainer.querySelector('.equal');
@@ -137,3 +140,7 @@ backButton.addEventListener('click', function() {
     display.innerText = currString;
     updateNumber();
 })
+
+document.addEventListener('keypress', function(e) {
+    console.log(e.code);
+});
