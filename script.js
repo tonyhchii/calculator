@@ -95,6 +95,16 @@ equalButton.addEventListener('click', function() {
     }
 });
 
+let decimalButton = buttonContainer.querySelector('.dec');
+decimalButton.addEventListener('click', function() {
+    addDecimal();
+})
+
+function addDecimal() {
+    if(!display.innerText.includes('.')) {
+        updateDisplay('.');
+    }
+}
 function calculate() {
     let ans;
     switch(operator) {
@@ -156,8 +166,9 @@ document.addEventListener('keydown', function(e) {
         operator = e.key;
     } else if (e.key == 'Backspace'){
         backspace();
-    }    else if (e.key == 'Enter') {
+    } else if (e.key == 'Enter') {
         calculate();
-    } 
-    console.log(e.key);
+    } else if (e.key == '.') {
+        addDecimal();
+    }
 });
