@@ -140,9 +140,11 @@ backButton.addEventListener('click', function() {
 
 function backspace() {
     let currString = display.innerText;
-    currString = currString.substring(0,currString.length - 1);
-    display.innerText = currString;
-    updateNumber();
+    if (currString.length > 0) {
+        currString = currString.substring(0,currString.length - 1);
+        display.innerText = currString;
+        updateNumber();
+    }
 }
 
 document.addEventListener('keydown', function(e) {
@@ -152,10 +154,10 @@ document.addEventListener('keydown', function(e) {
         updateDisplay(e.key);
     } else if (posOper.includes(e.key)) {
         operator = e.key;
-    } else if (e.key = 'Enter') {
-        calculate();
-    } else if (e.key = 'Backspace'){
+    } else if (e.key == 'Backspace'){
         backspace();
-    }
+    }    else if (e.key == 'Enter') {
+        calculate();
+    } 
     console.log(e.key);
 });
