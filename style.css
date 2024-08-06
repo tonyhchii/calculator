@@ -7,8 +7,14 @@
 
 .button {
     padding: 35px;
-    width: 40px;
+    width: 90px;
     text-align: center;
+    color: white;
+    font-size: 25px;
+    background-color: #14161E;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
 }
 
 .container {
@@ -23,9 +29,19 @@
 
 
 .display {
-    width: 280px;
+    width: 358px;
     height: 100px;
-    background-color: aqua;
-    font-size: 100px;
+    background-color: #32343E;
+    color: gray;
+    font-size: 80px;
     text-align: right;
+    font-weight: 200;
+}
+
+.oper, .clear, .equal, .change {
+    background-color: #1B1D27;
+}
+
+.clear {
+    color: #C03131;
 }
